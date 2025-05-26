@@ -1,0 +1,13 @@
+﻿################################################################################
+# 這個 .gitignore 檔案由 Microsoft(R) Visual Studio 自動建立。
+################################################################################
+
+/iitSystemWeb/.vs/iitSystemWeb
+/iitSystemWeb/bin
+/iitSystemWeb/obj
+/iitMSGWeb/bin/Release/net9.0
+/iitMSGWeb/obj
+/iitDataWeb/bin
+/iitDataWeb/obj
+/iitLogWeb/bin
+/iitLogWeb/obj
