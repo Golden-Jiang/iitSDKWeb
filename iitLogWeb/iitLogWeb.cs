@@ -108,7 +108,7 @@ namespace iitLogWeb
                     lc.LogMessage       =   this.Log.LogMessage;
                 //
                 lc.HostIP               =   Static.HostIP;
-                lc.ClientIP             =   Static.httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString();
+                lc.ClientIP             =   Static.ClientIP;
                 lc.except               =   this.Log.except;
                 //
                 SaveLog( lc );

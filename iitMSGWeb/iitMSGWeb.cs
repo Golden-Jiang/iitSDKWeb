@@ -124,7 +124,7 @@ namespace iitMSGWeb
                 if( ! String.IsNullOrEmpty( iitMSG.HTTPMSG[ Index ] ) )
                     ReturnValue =   false;
             } // end of try
-            catch( Exception except )
+            catch
             {
             } // end of catch
 //

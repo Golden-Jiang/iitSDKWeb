@@ -65,8 +65,9 @@ namespace iitSystemWeb
         public static object _lock = new object(); 
         public static string SystemName = "";
         public static string HostIP = "";
-        public static IConfiguration? config = null;
-        public static IHttpContextAccessor? httpContextAccessor = null;
+        public static string ClientIP = "";
+        public static IConfiguration config = null;
+        public static IHttpContextAccessor httpContextAccessor = null;
 //
         public class Log
         {
