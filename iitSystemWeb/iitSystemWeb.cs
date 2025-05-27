@@ -76,6 +76,7 @@ namespace iitSystemWeb
             public static string  DebugMust {  get; set; }
             public static string  DebugLog {  get; set; }
             public static int     LogLevel { get; set; }
+            public static bool    LogReady { get; set; }
         } // end of public class Log
     } // end of public class Static
 } // end of namespace iitSystemWeb

@@ -45,7 +45,9 @@ namespace iitSystemWeb
                     else
                         Static.Log.LogLevel = iitConst.LOG.LEVEL_LOWEST;
 
-                    Static.ClientIP = "::1";
+                    Static.Log.LogReady = false;
+
+                    //Static.httpContextAccessor.HttpContext.Items[ "ClientIP" ] = "::1";
                 } // end of lock (Static._lock)
             } // end of if (Static.config == null)
         } // end of public static void InitStatic( IConfiguration config, ...)
@@ -57,7 +59,7 @@ namespace iitSystemWeb
         //
         public static void SetClientIP( IHttpContextAccessor httpContextAccessor )
         {
-            Static.ClientIP = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            Static.httpContextAccessor.HttpContext.Items[ "ClientIP" ] = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
         } // end of GetClientIP( ... )
         //
         public static string GetHostIP()
