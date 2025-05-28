@@ -59,6 +59,7 @@ namespace iitSystemWeb
         //
         public static void SetClientIP( IHttpContextAccessor httpContextAccessor )
         {
+            Static.httpContextAccessor = httpContextAccessor;
             Static.httpContextAccessor.HttpContext.Items[ "ClientIP" ] = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
         } // end of GetClientIP( ... )
         //
