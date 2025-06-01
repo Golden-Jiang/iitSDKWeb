@@ -49,7 +49,8 @@ namespace iitLogWeb
                               [CallerFilePath] string filePath = "", 
                               [CallerLineNumber] int lineNumber = 0 );
 
-        //public abstract void SaveLog( IiitLog log );
+        public void SaveLog( IiitLog log );
+        public void ResetLog( IiitLog log );
     } // end of public interface IiitLog
 
     public class iitLog : IiitLog
@@ -84,7 +85,7 @@ namespace iitLogWeb
             this.except = null;
         } // end of public LogClass()
 
-        private void ResetLog( iitLog iLog )
+        public void ResetLog( IiitLog iLog )
         {
             this.LogMessage = "";
             this.ClientIP = "null";
@@ -118,7 +119,7 @@ namespace iitLogWeb
             } // end of catch
         } // end of WriteLog( ... )
          
-        private void SaveLog( iitLog iLog )
+        public void SaveLog( IiitLog iLog )
         {
             bool LogMust = false;
             string[] DebugMustFunction;
