@@ -12,7 +12,5 @@
 /iitLogWeb/bin
 /iitLogWeb/obj
 /iitToolsWeb/bin
-/iitToolsWeb/obj
+/iitToolsWeb/obj/Release\net9.0
 /iitSystemWeb/.vs/ProjectEvaluation
-/iiitToolsWeb/Properties
-/iiitToolsWeb/iitToolsWeb.csproj
