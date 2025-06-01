@@ -1,23 +1,27 @@
 ﻿//===================================================================================================
 // Project Name  : iit SDK For ASP.NET Core DLL
-// Program Name  : iitLogWeb.cs
-// Description   : iit Web SDK 中處理程式執行記錄
+// Program Name  : iitLog.cs
+// Description   : iit Web SDK 中處理程式執行記錄(使用依賴注入)
 // Version		 : Ver 1.0.0.0
-// Create Author : Golden Jiang 2025/05/23 15:40 建立於 D:\Golden\TSB2\Product\iit SDK For Win-Web\iitLogWeb 目錄
+// Create Author : Golden Jiang 2025/06/01 13:30 建立於 D:\Golden\TSB2\Product\iitSDKWeb\iitLogWeb 目錄
 // Update Record :
 // Note          :
 //===================================================================================================
 //---------------------------------------------------------------------------------------------------
 // declare package
 //---------------------------------------------------------------------------------------------------
-using iitSystemWeb;
 using Microsoft.AspNetCore.Http;
+//
+// iitSDKWeb
+//
+using iitSystemWeb;
+using System.Runtime.CompilerServices;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
 namespace iitLogWeb
 {
-    public interface ILogClass
+    public interface IiitLog
     {
         public string SystemName { get; set; }
 
@@ -38,92 +42,83 @@ namespace iitLogWeb
         public string ClientIP { get; set; }
 
         public Exception except { get; set; }
+
+        //public abstract void WriteLog();
+        public void WriteLog( string message, string LogType, int LogLevel, string ClinntIP,
+                              [CallerMemberName] string memberName = "", 
+                              [CallerFilePath] string filePath = "", 
+                              [CallerLineNumber] int lineNumber = 0 );
+
+        //public abstract void SaveLog( IiitLog log );
     } // end of public interface IiitLog
 
-    public class ILog 
+    public class iitLog : IiitLog
     {
-        public class LogClass 
+        public string SystemName { get; set; }
+
+        public string FunctionName { get; set; }
+
+        public string FunctionEnterTime { get; set; }
+
+        public int LogLevel { get; set; }
+
+        public string LogType { get; set; }
+
+        public string FunctionExitTime { get; set; }
+
+        public string LogMessage { get; set; }
+
+        public string HostIP { get; set; }
+
+        public string ClientIP { get; set; }
+
+        public Exception except { get; set; }
+
+        public iitLog() 
+        { 
+            this.SystemName = Static.SystemName;
+            this.FunctionEnterTime = DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" );
+            this.LogMessage = "";
+            this.HostIP = "";
+            this.ClientIP = "null";
+            this.except = null;
+        } // end of public LogClass()
+
+        private void ResetLog( iitLog iLog )
         {
-            public string SystemName { get; set; }
+            this.LogMessage = "";
+            this.ClientIP = "null";
+            this.except = null;
+        }
 
-            public string FunctionName { get; set; }
-
-            public string FunctionEnterTime { get; set; }
-
-            public int LogLevel { get; set; }
-
-            public string LogType { get; set; }
-
-            public string FunctionExitTime { get; set; }
-
-            public string LogMessage { get; set; }
-
-            public string HostIP { get; set; }
-
-            public string ClientIP { get; set; }
-
-            public Exception except { get; set; }
-
-            public LogClass( IHttpContextAccessor httpContextAccessor ) 
-            { 
-                this.SystemName = Static.SystemName;
-                this.FunctionEnterTime = DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" );
-                this.LogMessage = "";
-                this.HostIP = "";
-                if( httpContextAccessor != null )
-                    this.ClientIP = httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString();
-                else 
-                    this.ClientIP = "null";
-                this.except = null;
-            } // end of public LogClass()
-        } // end of public class LogClass
-
-        public LogClass Log { get; set; }
-
-        public ILog( IHttpContextAccessor httpContextAccessor )
-        {
-            Log = new LogClass( httpContextAccessor );
-        } // end of public ILog()
-        //
-        public void WriteLog( string LogMessage, string LogType, int LogLevel,
+        public void WriteLog( string LogMessage, string LogType, int LogLevel, string ClinntIP,
                             [System.Runtime.CompilerServices.CallerMemberName] string CallerName = "",
                             [System.Runtime.CompilerServices.CallerFilePath] string CallerSourceFile = "",
                             [System.Runtime.CompilerServices.CallerLineNumber] int CallerLineNumber = 0 )
         {
-            ILog.LogClass lc =   new ILog.LogClass( null );
-            //
             try
             {
-                lc.SystemName           =   Static.SystemName;
-                lc.FunctionName         =   Path.GetFileName( CallerSourceFile ) + "->" + CallerName + "()";
-                lc.FunctionEnterTime    =   this.Log.FunctionEnterTime;
-                lc.LogLevel             =   LogLevel;
-                lc.LogType              =   LogType;                    // DEBUG, INFO, WARN, ERROR, CRITIAL, OFF
-                lc.FunctionExitTime     =   DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" );
-                //
+                this.FunctionName       =   Path.GetFileName( CallerSourceFile ) + "->" + CallerName + "()";
+                this.LogLevel           =   LogLevel;
+                this.LogType            =   LogType;                    // DEBUG, INFO, WARN, ERROR, CRITIAL, OFF
+                this.FunctionExitTime   =   DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" );
+                 
                 if( LogMessage.Length > 0 )
-                    lc.LogMessage       =   this.Log.LogMessage + LogMessage;
-                else
-                    lc.LogMessage       =   this.Log.LogMessage;
-                //
-                lc.HostIP               =   Static.HostIP;
-                if( Static.Log.LogReady )
-                    lc.ClientIP         =   this.Log.ClientIP;
-                else
-                {
-                    lc.ClientIP         =   "Log Service set to ready";
-                    Static.Log.LogReady =   true;
-                }
-                lc.except               =   this.Log.except;
-                //
-                SaveLog( lc );
+                    this.LogMessage     =   this.LogMessage + LogMessage;
+                
+                this.HostIP             =   Static.HostIP;
+                this.ClientIP           =   ClinntIP;
+                 
+                SaveLog( this );
+
+                ResetLog( this );
             } // end of try
             catch
             {
             } // end of catch
         } // end of WriteLog( ... )
-        //
-        private void SaveLog( ILog.LogClass iLog )
+         
+        private void SaveLog( iitLog iLog )
         {
             bool LogMust = false;
             string[] DebugMustFunction;
@@ -185,7 +180,7 @@ namespace iitLogWeb
             {
             } // end of catch
         } // end of SaveLog()
-    } // end of public class ILog
+    } // end of public class iitLog
 } // end of namespace iitLogWeb
 //===================================================================================================
 // End of iitLogWeb.cs

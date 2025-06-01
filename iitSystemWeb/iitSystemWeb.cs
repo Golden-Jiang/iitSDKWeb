@@ -12,6 +12,7 @@
 //---------------------------------------------------------------------------------------------------
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using System.Runtime.Serialization;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
@@ -59,13 +60,25 @@ namespace iitSystemWeb
     {
         public const string A0000   =   "交易成功";       
     }
-    //
+     
+    public class iitException : Exception, ISerializable
+    {
+        public iitException() : base( "" ) { }
+            
+        public iitException( string message ) : base( message ) { }
+            
+        public iitException( string message, Exception inner ) : base( message, inner ) { }
+            
+        protected iitException( SerializationInfo info, StreamingContext context ) : base( info, context ) { }
+    } // end of iitException
+
     public class Static
     {
         public static object _lock = new object(); 
         public static string SystemName = "";
         public static string HostIP = "";
-        public static string ClientIP = "";
+        public static bool SystemStartLog = false;
+        public static string SystemStartMesage = "";
         public static IConfiguration config = null;
         public static IHttpContextAccessor httpContextAccessor = null;
 //

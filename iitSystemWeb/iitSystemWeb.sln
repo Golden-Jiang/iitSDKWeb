@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iitSystemWeb", "iitSystemWeb.csproj", "{97161516-647B-406F-83D5-0FB45FC2ABB8}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iitDataWeb", "..\iitDataWeb\iitDataWeb.csproj", "{1AC96BD0-3344-4510-8D88-5FB14482E26D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iitLogWeb", "..\iitLogWeb\iitLogWeb.csproj", "{D590DEE6-F52B-4578-8429-F978D1DE1193}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iitToolsWeb", "..\iiitToolsWeb\iitToolsWeb.csproj", "{5261756E-3BBC-4875-8F86-00D036B86CF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D590DEE6-F52B-4578-8429-F978D1DE1193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D590DEE6-F52B-4578-8429-F978D1DE1193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D590DEE6-F52B-4578-8429-F978D1DE1193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5261756E-3BBC-4875-8F86-00D036B86CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5261756E-3BBC-4875-8F86-00D036B86CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5261756E-3BBC-4875-8F86-00D036B86CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5261756E-3BBC-4875-8F86-00D036B86CF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -24,11 +24,11 @@ namespace iitDataWeb
     [Serializable]
     public class iitAPIResultClass
     {
-        public string   RespCode;
-        public string   RespDesc;
-        public object   RespData;
-        public string   RequestDateTime;
-        public string   RespDateTime;
+        public string   RespCode { get; set; }
+        public string   RespDesc { get; set; }
+        public object   RespData { get; set; }
+        public string   RequestDateTime { get; set; }
+        public string   RespDateTime { get; set; }
 //
         public iitAPIResultClass()
         {

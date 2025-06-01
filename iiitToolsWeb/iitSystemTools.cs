@@ -1,24 +1,28 @@
 ﻿//===================================================================================================
 // Project Name  : iit SDK For MVC Core DLL
-// Program Name  : SystemTools.cs
-// Description   : iit Web SDK 中工具模組
+// Program Name  : iitSystenmTools.cs
+// Description   : iit Web SDK 中公用函數
 // Version		 : Ver 1.0.0.0
-// Create Author : Golden Jiang 2025/05/27 09:44 建立於 D:\Golden\TSB2\Product\iit SDK For Win-Web\iitSystemWeb 目錄
+// Create Author : Golden Jiang 2025/05/29 14:30 建立於 D:\Golden\TSB2\Product\iit SDK For Win-Web\iitToolsWeb 目錄
 // Update Record :
 // Note          :
 //===================================================================================================
 //---------------------------------------------------------------------------------------------------
 // declare package
 //---------------------------------------------------------------------------------------------------
+using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using System.Net;
+using iitSystemWeb;
+using iitDataWeb;
+using iitLogWeb;
+using iitMSGWeb;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
-namespace iitSystemWeb
+namespace iitToolsWeb
 {
-    public class SystemTools
+    public class iitSystemTools
     {
         public static void SystemStart(IConfiguration config)
         {
@@ -59,8 +63,8 @@ namespace iitSystemWeb
         //
         public static void SetClientIP( IHttpContextAccessor httpContextAccessor )
         {
-            Static.httpContextAccessor = httpContextAccessor;
-            Static.httpContextAccessor.HttpContext.Items[ "ClientIP" ] = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            //Static.httpContextAccessor = httpContextAccessor;
+            httpContextAccessor.HttpContext.Items[ "ClientIP" ] = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
         } // end of GetClientIP( ... )
         //
         public static string GetHostIP()
@@ -86,8 +90,8 @@ namespace iitSystemWeb
               //
             return ReturnValue;
         } // end of GetHostIP( ... )
-    } // end of class SystemTools
-} // end of namespace iitSystemWeb
+    } // end of public class iitSystemTools
+} // end of namespace iitToolsWeb
 //===================================================================================================
-// End of SystemTools.cs
+// End of iitToolsWeb.cs
 //===================================================================================================

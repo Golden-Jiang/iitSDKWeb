@@ -7,7 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\iitMSGWeb\iitMSGWeb.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="iit.System.Data">
+      <HintPath>..\..\iit SDK For Win-Web\iit.System.Data\iit.System.Data\bin\Release\iit.System.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

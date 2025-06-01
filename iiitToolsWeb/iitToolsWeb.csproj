@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="iitDataWeb">
+      <HintPath>..\iitDataWeb\bin\Release\net9.0\iitDataWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="iitLogWeb">
+      <HintPath>..\iitLogWeb\bin\Release\net9.0\iitLogWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="iitMSGWeb">
+      <HintPath>..\iitMSGWeb\bin\Release\net9.0\iitMSGWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="iitSystemWeb">
+      <HintPath>..\iitSystemWeb\bin\Release\net9.0\iitSystemWeb.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
