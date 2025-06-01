@@ -24,7 +24,7 @@ namespace iitToolsWeb
 {
     public class iitSystemTools
     {
-        public static void SystemStart(IConfiguration config)
+        public static void SystemStart( IConfiguration config )
         {
             if( Static.config == null )
             {
@@ -54,8 +54,13 @@ namespace iitToolsWeb
                     //Static.httpContextAccessor.HttpContext.Items[ "ClientIP" ] = "::1";
                 } // end of lock (Static._lock)
             } // end of if (Static.config == null)
+
+            // 初始化系統公用訊息
+            iitMSG.Start();
+
+            Static.SystemStartMesage = $"WebAPI System Start at {DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}";
         } // end of public static void InitStatic( IConfiguration config, ...)
-        //
+         
         public static string GetSystemName( IConfiguration _config )
         {
             return _config[ "System:SystemName" ];

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("iitToolsWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb3d9f59544de958332c09ba11378387f5933696")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e16ce45a5efc81da1adcc9e29874ee4b9c033ede")]
 [assembly: System.Reflection.AssemblyProductAttribute("iitToolsWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("iitToolsWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
