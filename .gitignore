@@ -5,10 +5,12 @@
 /iitSystemWeb/.vs/iitSystemWeb
 /iitSystemWeb/bin
 /iitSystemWeb/obj
-/iitMSGWeb/bin/Release/net9.0
+/iitMSGWeb/bin
 /iitMSGWeb/obj
 /iitDataWeb/bin
 /iitDataWeb/obj
 /iitLogWeb/bin
 /iitLogWeb/obj
+/iitToolsWeb/bin
+/iitToolsWeb/obj
 /iitSystemWeb/.vs/ProjectEvaluation
