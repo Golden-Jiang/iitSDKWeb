@@ -13,6 +13,8 @@
 using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http.Extensions;
+
 using iitSystemWeb;
 using iitDataWeb;
 using iitLogWeb;
@@ -61,15 +63,27 @@ namespace iitToolsWeb
             Static.SystemStartMesage = $"WebAPI System Start at {DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}";
         } // end of public static void InitStatic( IConfiguration config, ...)
          
+        public static void SetClientEnvironment( IHttpContextAccessor httpContextAccessor, IiitLog _Log, string _ClientIP ) 
+        {
+            if( ! Static.SystemStartLog )
+            { 
+                _Log.WriteLog( Static.SystemStartMesage, iitConst.LOG.INFO, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+                Static.SystemStartLog = true;
+            } // end of if( ! Static.SystemStartLog )
+
+            _Log.WriteLog( httpContextAccessor.HttpContext?.Request?.GetEncodedUrl(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+        } // end of SetClientEnvironment( ... )
+
         public static string GetSystemName( IConfiguration _config )
         {
             return _config[ "System:SystemName" ];
         } // end of GetSystemName()
-        //
-        public static void SetClientIP( IHttpContextAccessor httpContextAccessor )
+
+        public static string SetClientIP( IHttpContextAccessor httpContextAccessor )
         {
-            //Static.httpContextAccessor = httpContextAccessor;
             httpContextAccessor.HttpContext.Items[ "ClientIP" ] = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+
+            return httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString();
         } // end of GetClientIP( ... )
         //
         public static string GetHostIP()

@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iitDataWeb", "..\iitDataWeb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iitLogWeb", "..\iitLogWeb\iitLogWeb.csproj", "{D590DEE6-F52B-4578-8429-F978D1DE1193}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iitToolsWeb", "..\iiitToolsWeb\iitToolsWeb.csproj", "{5261756E-3BBC-4875-8F86-00D036B86CF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iitToolsWeb", "..\iitToolsWeb\iitToolsWeb.csproj", "{5261756E-3BBC-4875-8F86-00D036B86CF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
