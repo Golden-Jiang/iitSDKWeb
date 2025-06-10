@@ -208,7 +208,7 @@ namespace iitToolsWeb
         /// </summary>
         /// <param name="id">身分證 or 居留證</param>
         /// <returns>bool</returns>
-        private static bool VerifyTaiwanIdIntermediateString( string id)
+        private static bool VerifyTaiwanIdIntermediateString( string id )
         {
             // if is not a number (舊版居留證編號)
             var secondChar = id[1];
