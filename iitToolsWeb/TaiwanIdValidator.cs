@@ -18,6 +18,10 @@ namespace iitToolsWeb
 {
     public class TaiwanIdValidator
     {
+        public static bool isMobilePhoneNumber( string phoneNumber )
+        {
+            return Regex.IsMatch( phoneNumber, @"^09[0-9]{8}$" );
+        }
         /// <summary>
         /// Verify the input is a valid GUI Number (中華民國統一編號)
         /// <para>Step 1: 先把統一編號的每個數字分別乘上對應的係數 (1, 2, 1, 2, 1, 2, 4, 1)</para>
